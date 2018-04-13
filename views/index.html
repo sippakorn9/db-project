@@ -1,28 +1,35 @@
 <!doctype=html>
 <html>
-
 <head>
-    <h1>TeamS4RIE</h1>
 
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+
+    <title>TeamS4RIE</title>
 </head>
-
-
 <body>
-    <form method="POST">
-        <input type="radio" name="typeLogin" value="student" checked>Student
-        <input type="radio" name="typeLogin" value="teacher">Teacher<br>
-        username:
-        <input type='text' name="username" placeholder="username"><br>
-        password:
-        <input type="password" name='password' placeholder="password"> <br>
-        <input type="submit" value="LogIn">
-
-    </form>
-
-
-
+    <div class="login-page">
+        <h1 style=" text-align: center;">TeamSarie</h1>
+        <div class="form">
+            <form method="POST" class="login-form">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="typeLogin" value="student" id="option1" autocomplete="off" checked> Student
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="typeLogin" value="teacher" id="option2" autocomplete="off"> Teacher
+                    </label>
+                </div>
+                <input type="text" class="form-control" name="username" placeholder="Username"/>
+                <input type="password" class="form-control" name='password' placeholder="Password"/>
+                <input type="submit" class="btn btn-primary" value="LogIn">
+            </form>
+        </div>
+    </div>
 </body>
-
-
-
 </html>
