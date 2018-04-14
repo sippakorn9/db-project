@@ -15,7 +15,6 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input[type=text],.form input[type=password] {
-  font-family: "Roboto", sans-serif;
   outline: 0;
   background: #FFFFFF;
   width: 100%;
@@ -26,7 +25,6 @@
   font-size: 14px;
 }
 .form input[type=submit]{
-  font-family: "Roboto", sans-serif;
   outline: 0;
   width: 100%;
   border: 0;

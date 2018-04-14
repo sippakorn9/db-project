@@ -29,3 +29,9 @@ app.post("/",body,(req,res)=>{
         res.redirect('/teacher')
     }
 })
+
+app.post("/student",body,(req,res)=>{
+    if(req.body.typeLogout == 'Logout'){
+        res.redirect('/')
+    }
+})
