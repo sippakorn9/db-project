@@ -4,6 +4,13 @@ var ejs =require('ejs')
 var path = require('path')
 var body =require('body-parser').urlencoded({extended:true})
 var mysql = require('mysql')
+var connection = {
+    host: 'sariedb.c0q2zhaerlke.ap-southeast-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'password', 
+    database: 'banking'
+}
+var pool = mysql.createPool(connection)
 
 app.engine('html',ejs.renderFile)
 app.listen(3000)
@@ -31,6 +38,18 @@ app.get('/student/payment',(req,res)=>{
 
 app.get('/student/grade',(req,res)=>{
     res.render('grade.html')
+})
+
+app.get('/studentGrade',(req,res)=>{
+    pool.query("select * from account",
+    (error, data) => {
+        console.log("pass")
+        //console.log( data)
+        res.json(data)
+
+        
+    })
+
 })
 
 app.get('/student/withdraw',(req,res)=>{

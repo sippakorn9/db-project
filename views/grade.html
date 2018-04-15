@@ -3,14 +3,32 @@
 
 <head>
     <!-- jQuery and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
     <title>TeamS4RIE</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +37,9 @@
         <a class="navbar-brand" href="#">TeamS4RIE</a>
         <div style="margin-left:auto; margin-right:0;">
             <span class="text-white">Tester1</span>
-            <a data-toggle="modal" data-target="#exampleModal"><button class="btn btn-sm btn-outline-primary">Logout</button></a>
+            <a data-toggle="modal" data-target="#exampleModal">
+                <button class="btn btn-sm btn-outline-primary">Logout</button>
+            </a>
         </div>
     </nav>
 
@@ -53,11 +73,43 @@
         <!-- /#sidebar-wrapper -->
         <!-- /#page-content-wrapper -->
     </div>
-  
+
     <div class="container-fluid" style="margin: 56px 0 0 200px;width:calc(100% - 200px);">
         <h1 style="text-align: center">TeamS4RIE : Grade</h1>
+        <table id="table" style="width:100%">
+            <tr>
+                <th>accounNumer</th>
+                <th>branceName</th>
+                <th>balance</th>
+            </tr>
+
+        </table>
+
     </div>
-    
+    <script type="text/javascript">
+        var table = document.getElementById("table")
+
+        fetch('http://localhost:3000/studentGrade/')
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then((rows) => {
+                for (let row = 0; row < rows.length; row++) {
+                    // row will be a mysql row -- you can loop over these and do what you want with them
+                    //********************* change by database*********************************
+                    var acNumber = "<th>" + rows[row].account_number + "</th>"
+                    var brName = "<th>" + rows[row].branch_name + "</th>"
+                    var balance = "<th>" + rows[row].balance + "</th>"
+                    table.innerHTML += "<tr>" + acNumber + brName + balance + "</tr>"
+
+                    console.log('pass')
+                }
+            })
+            .catch(console.log);
+    </script>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -65,7 +117,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -76,7 +128,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 
 
