@@ -78,9 +78,8 @@
         <h1 style="text-align: center">TeamS4RIE : Grade</h1>
         <table id="table" style="width:100%">
             <tr>
-                <th>accounNumer</th>
-                <th>branceName</th>
-                <th>balance</th>
+                <th>course name</th>
+                <th>grade</th>
             </tr>
 
         </table>
@@ -99,10 +98,9 @@
                 for (let row = 0; row < rows.length; row++) {
                     // row will be a mysql row -- you can loop over these and do what you want with them
                     //********************* change by database*********************************
-                    var acNumber = "<th>" + rows[row].account_number + "</th>"
-                    var brName = "<th>" + rows[row].branch_name + "</th>"
-                    var balance = "<th>" + rows[row].balance + "</th>"
-                    table.innerHTML += "<tr>" + acNumber + brName + balance + "</tr>"
+                    var cName = "<th>" + rows[row].coursename + "</th>"
+                    var grade = "<th>" + rows[row].grade + "</th>"
+                    table.innerHTML += "<tr>" + cName+grade + "</tr>"
 
                     console.log('pass')
                 }
