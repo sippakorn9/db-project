@@ -8,7 +8,7 @@ var connection = {
     host: 'sariedb.c0q2zhaerlke.ap-southeast-1.rds.amazonaws.com',
     user: 'admin',
     password: 'password', 
-    database: 'banking'
+    database: 'sarie'
 }
 var pool = mysql.createPool(connection)
 
@@ -41,7 +41,7 @@ app.get('/student/grade',(req,res)=>{
 })
 
 app.get('/studentGrade',(req,res)=>{
-    pool.query("select * from account",
+    pool.query("select * from test",
     (error, data) => {
         console.log("pass")
         //console.log( data)
