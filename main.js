@@ -16,12 +16,14 @@ app.engine('html',ejs.renderFile)
 app.listen(3000)
 app.use(express.static(path.join(__dirname, 'public')));
 
+var name;
+
 app.get("/",(req,res)=>{
     res.render('index.html')
 })
 
 app.get('/student',(req,res)=>{
-    res.render('student.html')
+    res.render('student.html',{name: name})
 })
 
 app.get('/student/registar',(req,res)=>{
@@ -70,7 +72,23 @@ app.get('/teacher',(req,res)=>{
 
 app.post("/",body,(req,res)=>{
     if(req.body.typeLogin == 'student'){
-        res.redirect('/student')
+        pool.query("select * from login where username= ? and password=?",
+        [req.body.username, req.body.password],
+        (error, data) => {
+            console.log("login")
+            //console.log( data)
+           if(data.length==1){
+               name = data[0].username
+               console.log(name)
+                res.redirect('/student')
+           }
+           else{
+               console.log('wrong password')
+           }
+    
+            
+        })
+       
     }
     else if(req.body.typeLogin == 'teacher'){
         res.redirect('/teacher')
