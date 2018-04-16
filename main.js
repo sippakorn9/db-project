@@ -17,10 +17,11 @@ app.listen(3000)
 app.use(express.static(path.join(__dirname, 'public')));
 
 var name;
+var message="";
 
 app.get("/",(req,res)=>{
     name=""
-    res.render('index.html')
+    res.render('index.html',{message,message})
 })
 
 app.get('/student',(req,res)=>{
@@ -28,19 +29,19 @@ app.get('/student',(req,res)=>{
 })
 
 app.get('/student/registar',(req,res)=>{
-    res.render('registar.html')
+    res.render('registar.html',{name: name})
 })
 
 app.get('/student/adddrop',(req,res)=>{
-    res.render('adddrop.html')
+    res.render('adddrop.html',{name: name})
 })
 
 app.get('/student/payment',(req,res)=>{
-    res.render('payment.html')
+    res.render('payment.html',{name: name})
 })
 
 app.get('/student/grade',(req,res)=>{
-    res.render('grade.html')
+    res.render('grade.html',{name: name})
 })
 
 app.get('/studentGrade',(req,res)=>{
@@ -56,15 +57,15 @@ app.get('/studentGrade',(req,res)=>{
 })
 
 app.get('/student/withdraw',(req,res)=>{
-    res.render('withdraw.html')
+    res.render('withdraw.html',{name: name})
 })
 
 app.get('/student/class_schedule',(req,res)=>{
-    res.render('class_schedule.html')
+    res.render('class_schedule.html',{name: name})
 })
 
 app.get('/student/exam_teach_schedule',(req,res)=>{
-    res.render('exam_teach_schedule.html')
+    res.render('exam_teach_schedule.html',{name: name})
 })
 
 app.get('/teacher',(req,res)=>{
@@ -79,15 +80,16 @@ app.post("/",body,(req,res)=>{
             console.log("login")
             //console.log( data)
            if(data.length==1){
-               name = data[0].username
-               console.log(name)
+                name = data[0].username
+                message = ""
+                console.log(name)
                 res.redirect('/student')
            }
            else{
-               console.log('wrong password')
+               message = "Invalid username or password"
+               console.log(message)
+               res.redirect('/')
            }
-    
-            
         })
        
     }
