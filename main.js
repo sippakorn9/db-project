@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var name;
 
 app.get("/",(req,res)=>{
+    name=""
     res.render('index.html')
 })
 
