@@ -28,10 +28,6 @@ app.get('/student',(req,res)=>{
     res.render('student.html',{name: name})
 })
 
-app.get('/student/registar',(req,res)=>{
-    res.render('registar.html',{name: name})
-})
-
 app.get('/student/adddrop',(req,res)=>{
     res.render('adddrop.html',{name: name})
 })
@@ -45,15 +41,12 @@ app.get('/student/grade',(req,res)=>{
 })
 
 app.get('/studentGrade',(req,res)=>{
-    pool.query("select * from test",
+    pool.query("select * from register where SID = ?",name,
     (error, data) => {
         console.log("pass")
         //console.log( data)
         res.json(data)
-
-        
     })
-
 })
 
 app.get('/student/withdraw',(req,res)=>{
@@ -74,22 +67,22 @@ app.get('/teacher',(req,res)=>{
 
 app.post("/",body,(req,res)=>{
     if(req.body.typeLogin == 'student'){
-        pool.query("select * from login where username= ? and password=?",
+        pool.query("select SID from student where SID= ? and loginPassword=sha2(?,256)",
         [req.body.username, req.body.password],
         (error, data) => {
             console.log("login")
-            //console.log( data)
-           if(data.length==1){
-                name = data[0].username
+            //console.log(data)
+            if(data.length==1){
+                name = data[0].SID
                 message = ""
-                console.log(name)
+                //console.log(name)
                 res.redirect('/student')
-           }
-           else{
-               message = "Invalid username or password"
-               console.log(message)
-               res.redirect('/')
-           }
+            }
+            else{
+                message = "Invalid username or password"
+                console.log(message)
+                res.redirect('/')
+            }
         })
        
     }

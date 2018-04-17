@@ -15,21 +15,18 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">TeamS4RIE</a>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background: rgba(0,0,0,0.8);">
+        <a class="navbar-brand" href="">TeamS4RIE</a> 
         <div style="margin-left:auto; margin-right:0;">
-            <span class="text-white"><%= name %></span>
-            <a data-toggle="modal" data-target="#exampleModal"><button class="btn btn-sm btn-outline-primary">Logout</button></a>
+            <span class="text-primary"style="margin-right:5px;"><%= name %></span>
+            <a data-toggle="modal" data-target="#exampleModal"><button class="btn btn-sm btn-outline-light">Logout</button></a>
         </div>
     </nav>
 
     <div id="wrapper" class="toggled">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li style="margin: 20px 0 0 0;">
-                    <a href="/student/registar">ลงทะเบียนเรียนรายวิชา</a>
-                </li>
+            <ul class="sidebar-nav" style="margin: 20px 0 0 0;">
                 <li>
                     <a href="/student/adddrop">เพิ่ม/ลดรายวิชา</a>
                 </li>
@@ -46,7 +43,7 @@
                     <a href="/student/class_schedule">ตารางเรียน</a>
                 </li>
                 <li>
-                    <a href="/student/exam_teach_schedule" style="background-color: rgba(255, 255, 255, 0.2);color: white;">ตารางสอน/ตารางสอบ</a>
+                    <a href="/student/exam_teach_schedule" style="background-color: rgba(0,0,0,0.05);">ตารางสอบ</a>
                 </li>
             </ul>
         </div>
@@ -54,7 +51,7 @@
         <!-- /#page-content-wrapper -->
     </div>
   
-    <div class="container-fluid" style="margin: 56px 0 0 200px;width:calc(100% - 200px);">
+    <div class="container-fluid" style="margin: 56px 0 0 200px;width:calc(100% - 200px);height:calc(100% - 56px);">
         <h1 style="text-align: center">TeamS4RIE : Exam and Teach Schedule</h1>
     </div>
     
