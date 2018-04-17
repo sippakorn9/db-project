@@ -74,7 +74,7 @@ app.get('/teacher',(req,res)=>{
 
 app.post("/",body,(req,res)=>{
     if(req.body.typeLogin == 'student'){
-        pool.query("select * from student where username= ? and password=sha2(?,256)",
+        pool.query("select * from login where username= ? and password=?",
         [req.body.username, req.body.password],
         (error, data) => {
             console.log("login")
