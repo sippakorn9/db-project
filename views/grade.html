@@ -59,10 +59,9 @@
         <h1 style="text-align: center">TeamS4RIE : Grade</h1>
         <table id="table"class="table table-responsive-sm">
             <tr>
-                <th>course name</th>
-                <th>grade</th>
+                <th>Course name</th>
+                <th>Grade</th>
             </tr>
-
         </table>
 
     </div>
@@ -79,8 +78,8 @@
                 for (let row = 0; row < rows.length; row++) {
                     // row will be a mysql row -- you can loop over these and do what you want with them
                     //********************* change by database*********************************
-                    var cName = "<th>" + rows[row].courseID + "</th>"
-                    var grade = "<th>" + rows[row].grade + "</th>"
+                    var cName = "<td>" + rows[row].courseName + "</td>"
+                    var grade = "<td>" + rows[row].grade + "</td>"
                     table.innerHTML += "<tr>" + cName+grade + "</tr>"
                     console.log('pass')
                 }

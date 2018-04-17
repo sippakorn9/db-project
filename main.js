@@ -41,10 +41,10 @@ app.get('/student/grade',(req,res)=>{
 })
 
 app.get('/studentGrade',(req,res)=>{
-    pool.query("select * from register where SID = ?",name,
+    pool.query("select C.courseName,R.grade from register R,course C where R.SID = ? and R.courseID = C.courseID",name,
     (error, data) => {
         console.log("pass")
-        //console.log( data)
+        //console.log(data)
         res.json(data)
     })
 })
