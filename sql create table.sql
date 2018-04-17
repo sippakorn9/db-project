@@ -1,5 +1,30 @@
 use sarie;
 
+create table faculty(
+	facultyID varchar(20),
+	facultyName varchar(20),
+    primary key(facultyID));
+
+create table department(
+	facultyID varchar(20),
+    departmentID varchar(20),
+	departName varchar(20),
+    primary key(facultyID,departmentID),
+    foreign key(facultyID) references faculty(facultyID));
+
+create table teacher(
+	TID varchar(20),
+	Fname varchar(20),
+    Lname varchar(20),
+	Bdate date,
+    sex varchar(1),
+    postion varchar(20),
+    facultyID varchar(20),
+    departmentID varchar(20),
+    loginPassword varchar(256),
+    primary key(TID),
+    foreign key(facultyID,departmentID) references department(facultyID,departmentID));
+
 
 create table student(
 	SID varchar(20),
@@ -17,32 +42,6 @@ create table student(
     foreign key(TID)references teacher(TID),
     foreign key(facultyID,departmentID) references department(facultyID,departmentID));
 
-create table teacher(
-	TID varchar(20),
-	Fname varchar(20),
-    Lname varchar(20),
-	Bdate date,
-    sex varchar(1),
-    postion varchar(20),
-    facultyID varchar(20),
-    departmentID varchar(20),
-    loginPassword varchar(256),
-    primary key(TID),
-    foreign key(facultyID,departmentID) references department(facultyID,departmentID));
-
-
-
-create table faculty(
-	facultyID varchar(20),
-	facultyName varchar(20),
-    primary key(facultyID));
-    
-create table department(
-	facultyID varchar(20),
-    departmentID varchar(20),
-	departName varchar(20),
-    primary key(facultyID,departmentID),
-    foreign key(facultyID) references faculty(facultyID));
 
     
 create table course(
@@ -56,20 +55,6 @@ create table course(
     primary key(courseID,academicYear,term),
     foreign key(facultyID,departmentID) references department(facultyID,departmentID));
     
-create table section(
-	courseID varchar(20),
-    academicYear year,
-    term int,
-	sectionNo varchar(2),
-    seat int,
-    acronym varchar(20),
-    roomNo varchar(20),
-    learningTime varchar(100),
-	primary key(courseID,academicYear,term,sectionNo),
-	foreign key(courseID,academicYear,term)references course(courseID,academicYear,term),
-    foreign key(acronym,roomNo) references room(acronym,roomNo));
-    
-    drop table section;
     
 create table building(
 	acronym varchar(20),
@@ -86,6 +71,34 @@ create table room (
     seat int,
     primary key(acronym,roomNO));
     
+    
+    
+create table section(
+	courseID varchar(20),
+    academicYear year,
+    term int,
+	sectionNo varchar(2),
+    seat int,
+    acronym varchar(20),
+    roomNo varchar(20),
+    learningTime varchar(100),
+	primary key(courseID,academicYear,term,sectionNo),
+	foreign key(courseID,academicYear,term)references course(courseID,academicYear,term),
+    foreign key(acronym,roomNo) references room(acronym,roomNo));
+    
+    drop table section;
+    
+create table register(
+	SID varchar(20),
+    courseID varchar(20),
+    academicYear year,
+	term int,
+    sectionNo varchar(2),
+    grade varchar(2) default 'x',
+    primary key (SID,courseID,academicYear,term),
+    foreign key(SID)references student(SID),
+    foreign key(courseID,academicYear,term) references course(courseID,academicYear,term));
+    
 
     
 create table program (
@@ -101,16 +114,7 @@ create table teaching(
     academyYear varchar(4),
 	term int);
     
-create table register(
-	SID varchar(20),
-    courseID varchar(20),
-    academicYear year,
-	term int,
-    sectionNo varchar(2),
-    grade varchar(2) default 'x',
-    primary key (SID,courseID,academicYear,term),
-    foreign key(SID)references student(SID),
-    foreign key(courseID,academicYear,term) references course(courseID,academicYear,term));
+
     
 create table  testplace(
 	ourseID varchar(20),
