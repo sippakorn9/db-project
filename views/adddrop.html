@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../image/favicon.ico" />
     <title>TeamS4RIE</title>
 </head>
 
@@ -52,7 +53,55 @@
     </div>
   
     <div class="container-fluid" style="margin: 56px 0 0 200px;width:calc(100% - 200px);height:calc(100% - 56px);">
-        <h1 style="text-align: center">TeamS4RIE : ADD and DROP</h1>
+       
+            <h2>ลดรายวิชา</h2>
+            <table id="table"class="table table-responsive-sm" style="width: 70%;margin: auto">
+                <thead>
+                    <tr>
+                        <th>ชื่อย่อรายวิชา</th>
+                        <th>ตอนเรียน</th>
+                        <th>หน่วยกิต</th>
+                        <th>ลด</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr>
+                        <td>DB MGT SYS DESIGN</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <h2>เพิ่มรายวิชา</h2>
+            <table id="table"class="table table-responsive-sm" style="width: 70%;margin: auto">
+                <thead>
+                    <tr>
+                        <th>ชื่อย่อรายวิชา</th>
+                        <th>ตอนเรียน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control " style="width: auto;"></td>
+                        <td><input type="text" class="form-control " style="width: auto;"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control " style="width: auto;"></td>
+                        <td><input type="text" class="form-control " style="width: auto;"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control " style="width: auto;"></td>
+                        <td><input type="text" class="form-control " style="width: auto;"></td>
+                    </tr>
+                </tbody>
+            </table>
     </div>
     
     <!-- Logout Modal-->
