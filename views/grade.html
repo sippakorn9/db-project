@@ -19,18 +19,23 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background: rgba(0,0,0,0.8);">
-        <a class="navbar-brand" href="">TeamS4RIE</a> 
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">TeamS4RIE</a>
         <div style="margin-left:auto; margin-right:0;">
-            <span class="text-primary"style="margin-right:5px;"><%= name %></span>
-            <a data-toggle="modal" data-target="#exampleModal"><button class="btn btn-sm btn-outline-light">Logout</button></a>
+            <span class="text-white"><%= name %></span>
+            <a data-toggle="modal" data-target="#exampleModal">
+                <button class="btn btn-sm btn-outline-primary">Logout</button>
+            </a>
         </div>
     </nav>
 
     <div id="wrapper" class="toggled">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav" style="margin: 20px 0 0 0;">
+            <ul class="sidebar-nav">
+                <li style="margin: 20px 0 0 0;">
+                    <a href="/student/registar">ลงทะเบียนเรียนรายวิชา</a>
+                </li>
                 <li>
                     <a href="/student/adddrop">เพิ่ม/ลดรายวิชา</a>
                 </li>
@@ -38,7 +43,7 @@
                     <a href="/student/withdraw">ถอนรายวิชา</a>
                 </li>
                 <li>
-                    <a href="/student/grade" style="background-color: rgba(0,0,0,0.05);">ผลการศึกษา</a>
+                    <a href="/student/grade" style="background-color: rgba(255, 255, 255, 0.2);color: white;">ผลการศึกษา</a>
                 </li>
                 <li>
                     <a href="/student/payment">ชำระเงินค่าลงทะเบียน</a>
@@ -47,7 +52,7 @@
                     <a href="/student/class_schedule">ตารางเรียน</a>
                 </li>
                 <li>
-                    <a href="/student/exam_teach_schedule">ตารางสอบ</a>
+                    <a href="/student/exam_teach_schedule">ตารางสอน/ตารางสอบ</a>
                 </li>
             </ul>
         </div>
@@ -55,13 +60,14 @@
         <!-- /#page-content-wrapper -->
     </div>
 
-    <div class="container-fluid" style="margin: 56px 0 0 200px;width:calc(100% - 200px);height:calc(100% - 56px);">
+    <div class="container-fluid" style="margin: 56px 0 0 200px;width:calc(100% - 200px);">
         <h1 style="text-align: center">TeamS4RIE : Grade</h1>
         <table id="table"class="table table-responsive-sm">
             <tr>
-                <th>Course name</th>
-                <th>Grade</th>
+                <th>course name</th>
+                <th>grade</th>
             </tr>
+
         </table>
 
     </div>
@@ -78,13 +84,17 @@
                 for (let row = 0; row < rows.length; row++) {
                     // row will be a mysql row -- you can loop over these and do what you want with them
                     //********************* change by database*********************************
-                    var cName = "<td>" + rows[row].courseName + "</td>"
-                    var grade = "<td>" + rows[row].grade + "</td>"
+                    var cName = "<th>" + rows[row].courseName + "</th>"
+                    var grade = "<th>" + rows[row].grade + "</th>"
                     table.innerHTML += "<tr>" + cName+grade + "</tr>"
+
                     console.log('pass')
                 }
             })
             .catch(console.log);
+
+
+        function grade()
     </script>
 
     <!-- Logout Modal-->
