@@ -41,7 +41,7 @@ app.get('/student/grade',(req,res)=>{
 })
 
 app.get('/studentGrade',(req,res)=>{
-    pool.query("select C.courseName,C.academicYear,C.term,R.grade from register R,course C where R.SID = ? and R.courseID = C.courseID",name,
+    pool.query("select C.courseName,C.academicYear,C.term,C.unit,R.grade from register R,course C where R.SID = ? and R.courseID = C.courseID",name,
     (error, data) => {
         console.log("pass")
         //console.log(data)

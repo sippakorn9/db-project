@@ -190,3 +190,6 @@ insert into section value('2110353',2016,2,'1',30,'ENG3','417','MO 9.00-11.00');
 insert into register value('5831080421','2110422',2017,2,2,'A+');
 insert into teaching value('SPJ','2110422',2017,2);
 insert into testplace value ('2110422',2017,2,'ENG3','204','2018-05-13','13.00-16.00');
+
+
+
